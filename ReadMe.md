@@ -13,10 +13,3 @@ A simple cross-platform application built with .NET MAUI that allows you to sear
 - Responsive UI for mobile and desktop  
 
 ---
-
-## 🚀 Getting Started
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/<your-username>/MyBooks.git
