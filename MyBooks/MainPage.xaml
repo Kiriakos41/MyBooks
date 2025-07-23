@@ -1,0 +1,169 @@
+﻿<ContentPage
+    x:Class="MyBooks.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MyBooks.ViewModels"
+    xmlns:models="clr-namespace:MyBooks.Models"
+    xmlns:temp="clr-namespace:MyBooks.Templates"
+    x:DataType="local:BooksViewModel"
+    Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!--  List template  -->
+            <DataTemplate x:Key="ListTemplate" x:DataType="models:Book">
+                <Grid Padding="8" ColumnDefinitions="Auto,*">
+                    <Border
+                        Grid.Column="0"
+                        HeightRequest="120"
+                        Stroke="Transparent"
+                        StrokeShape="RoundRectangle 20"
+                        WidthRequest="80">
+                        <Image Source="{Binding CoverImage}" />
+                    </Border>
+                    <VerticalStackLayout
+                        Grid.Column="1"
+                        Padding="10,0"
+                        Spacing="4">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="{Binding Title}" />
+                        <Label
+                            FontSize="12"
+                            Text="{Binding Authors[0].Name}"
+                            TextColor="Gray" />
+                    </VerticalStackLayout>
+                </Grid>
+            </DataTemplate>
+
+            <!--  Grid template  -->
+            <DataTemplate x:Key="GridTemplate" x:DataType="models:Book">
+                <Border
+                    Padding="4"
+                    HorizontalOptions="Fill"
+                    StrokeShape="RoundRectangle 8"
+                    StrokeThickness="0">
+
+                    <VerticalStackLayout HorizontalOptions="Fill" Spacing="6">
+                        <Border
+                            HeightRequest="140"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 20"
+                            WidthRequest="100">
+                            <Image Aspect="AspectFill" Source="{Binding CoverImage}" />
+                        </Border>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Title}" />
+                    </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+
+
+            <!--  Ο selector, με τις δύο ιδιότητες wired  -->
+            <temp:BookTemplateSelector
+                x:Key="BookTemplateSelector"
+                GridTemplate="{StaticResource GridTemplate}"
+                ListTemplate="{StaticResource ListTemplate}" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid
+        Padding="10"
+        HorizontalOptions="FillAndExpand"
+        RowDefinitions="Auto,*"
+        VerticalOptions="FillAndExpand">
+
+        <!--  SearchBar & button  -->
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="*,Auto"
+            ColumnSpacing="10">
+            <SearchBar
+                Grid.Column="0"
+                Placeholder="Search books..."
+                SearchCommand="{Binding LoadBooksCommand}"
+                SearchCommandParameter="{Binding SearchQuery}"
+                Text="{Binding SearchQuery}" />
+
+            <ImageButton
+                Grid.Column="1"
+                BackgroundColor="Transparent"
+                Command="{Binding ToggleLayoutCommand}"
+                CornerRadius="50"
+                HorizontalOptions="End"
+                MinimumHeightRequest="32"
+                Source="{Binding LayoutIcon}"
+                WidthRequest="32" />
+
+        </Grid>
+
+
+        <!--  CollectionView  -->
+        <CollectionView
+            Grid.Row="1"
+            HorizontalOptions="FillAndExpand"
+            ItemTemplate="{StaticResource BookTemplateSelector}"
+            ItemsLayout="{Binding CurrentItemsLayout}"
+            ItemsSource="{Binding Books}"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <CollectionView.EmptyViewTemplate>
+                <DataTemplate>
+                    <StackLayout
+                        Padding="20"
+                        HorizontalOptions="Center"
+                        Spacing="15"
+                        VerticalOptions="Center">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="180"
+                            Source="empty_box.png" />
+                        <Label
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="Start searching to find a book"
+                            TextColor="White" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.EmptyViewTemplate>
+        </CollectionView>
+
+
+
+        <!--  Loader Overlay  -->
+        <Grid
+            Grid.RowSpan="2"
+            BackgroundColor="#90000000"
+            HorizontalOptions="FillAndExpand"
+            InputTransparent="False"
+            IsVisible="{Binding IsLoading}"
+            VerticalOptions="FillAndExpand"
+            ZIndex="100">
+            <StackLayout
+                HorizontalOptions="Center"
+                Spacing="10"
+                VerticalOptions="Center">
+                <ActivityIndicator
+                    HeightRequest="50"
+                    IsRunning="True"
+                    WidthRequest="50"
+                    Color="White" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Text="Loading books..."
+                    TextColor="White" />
+            </StackLayout>
+
+        </Grid>
+
+
+    </Grid>
+</ContentPage>
