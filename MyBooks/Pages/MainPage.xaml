@@ -1,10 +1,11 @@
 ﻿<ContentPage
-    x:Class="MyBooks.MainPage"
+    x:Class="MyBooks.Pages.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MyBooks.ViewModels"
     xmlns:models="clr-namespace:MyBooks.Models"
     xmlns:temp="clr-namespace:MyBooks.Templates"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:DataType="local:BooksViewModel"
     Shell.NavBarIsVisible="False">
     <ContentPage.Resources>
@@ -32,11 +33,12 @@
                         <Label
                             FontAttributes="Bold"
                             FontSize="16"
-                            Text="{Binding Title}" />
+                            Text="{Binding Title}"
+                            TextColor="{StaticResource PrimaryDark}" />
                         <Label
                             FontSize="12"
                             Text="{Binding Authors[0].Name}"
-                            TextColor="Gray" />
+                            TextColor="LightGray" />
                     </VerticalStackLayout>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer
@@ -102,23 +104,27 @@
             Grid.Row="0"
             ColumnDefinitions="*,Auto"
             ColumnSpacing="10">
-            <SearchBar
+            <Border
                 Grid.Column="0"
-                Placeholder="Search books..."
-                SearchCommand="{Binding LoadBooksCommand}"
-                SearchCommandParameter="{Binding SearchQuery}"
-                Text="{Binding SearchQuery}" />
-
-            <ImageButton
+                BackgroundColor="{DynamicResource Gray100}"
+                StrokeShape="RoundRectangle 15">
+                <SearchBar
+                    Placeholder="Search books..."
+                    SearchCommand="{Binding LoadBooksCommand}"
+                    SearchCommandParameter="{Binding SearchQuery}"
+                    Text="{Binding SearchQuery}" />
+            </Border>
+            <Label
                 Grid.Column="1"
-                BackgroundColor="Transparent"
-                Command="{Binding ToggleLayoutCommand}"
-                CornerRadius="50"
-                HorizontalOptions="End"
-                MinimumHeightRequest="32"
-                Source="{Binding LayoutIcon}"
-                WidthRequest="32" />
-
+                FontFamily="mat"
+                FontSize="35"
+                HorizontalOptions="Center"
+                Text="{Binding LayoutIcon}"
+                VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ToggleLayoutCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
 
 
@@ -127,6 +133,7 @@
             x:Name="collectionView"
             Grid.Row="1"
             HorizontalOptions="FillAndExpand"
+            InputTransparent="{Binding IsLoading}"
             ItemTemplate="{StaticResource BookTemplateSelector}"
             ItemsLayout="{Binding CurrentItemsLayout}"
             ItemsSource="{Binding Books}"
@@ -146,8 +153,7 @@
                         <Label
                             FontSize="16"
                             HorizontalOptions="Center"
-                            Text="Start searching to find a book"
-                            TextColor="White" />
+                            Text="Start searching to find a book" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.EmptyViewTemplate>
@@ -171,14 +177,12 @@
                 <ActivityIndicator
                     HeightRequest="50"
                     IsRunning="True"
-                    WidthRequest="50"
-                    Color="White" />
+                    WidthRequest="50" />
                 <Label
                     FontAttributes="Bold"
                     FontSize="14"
                     HorizontalOptions="Center"
-                    Text="Loading books..."
-                    TextColor="White" />
+                    Text="Loading books..." />
             </StackLayout>
 
         </Grid>

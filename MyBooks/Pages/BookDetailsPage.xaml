@@ -4,8 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MyBooks.ViewModels"
     Title="{Binding Book.Title}"
-    x:DataType="local:BookDetailsViewModel"
-    BackgroundColor="#121212">
+    x:DataType="local:BookDetailsViewModel">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
@@ -26,13 +25,11 @@
                 FontAttributes="Bold"
                 FontSize="24"
                 HorizontalOptions="Center"
-                Text="{Binding Book.Title}"
-                TextColor="White" />
+                Text="{Binding Book.Title}" />
 
             <!--  Authors  -->
             <Border
                 Padding="12"
-                BackgroundColor="#10FFFFFF"
                 Stroke="Transparent"
                 StrokeShape="RoundRectangle 12">
                 <VerticalStackLayout Spacing="6">
@@ -40,18 +37,14 @@
                         FontAttributes="Bold"
                         FontSize="18"
                         Text="Authors"
-                        TextColor="{StaticResource Primary}" />
-                    <Label
-                        FontSize="16"
-                        Text="{Binding Book.AuthorsString}"
-                        TextColor="White" />
+                        TextColor="{StaticResource PrimaryDark}" />
+                    <Label FontSize="16" Text="{Binding Book.AuthorsString}" />
                 </VerticalStackLayout>
             </Border>
 
             <!--  Subjects  -->
             <Border
                 Padding="12"
-                BackgroundColor="#10FFFFFF"
                 Stroke="Transparent"
                 StrokeShape="RoundRectangle 12">
                 <VerticalStackLayout Spacing="6">
@@ -59,18 +52,14 @@
                         FontAttributes="Bold"
                         FontSize="18"
                         Text="Subjects"
-                        TextColor="{StaticResource Primary}" />
-                    <Label
-                        FontSize="16"
-                        Text="{Binding Book.SubjectsString}"
-                        TextColor="White" />
+                        TextColor="{StaticResource PrimaryDark}" />
+                    <Label FontSize="16" Text="{Binding Book.SubjectsString}" />
                 </VerticalStackLayout>
             </Border>
 
             <!--  Bookshelves  -->
             <Border
                 Padding="12"
-                BackgroundColor="#10FFFFFF"
                 Stroke="Transparent"
                 StrokeShape="RoundRectangle 12">
                 <VerticalStackLayout Spacing="6">
@@ -78,18 +67,14 @@
                         FontAttributes="Bold"
                         FontSize="18"
                         Text="Bookshelves"
-                        TextColor="{StaticResource Primary}" />
-                    <Label
-                        FontSize="16"
-                        Text="{Binding Book.BookshelvesString}"
-                        TextColor="White" />
+                        TextColor="{StaticResource PrimaryDark}" />
+                    <Label FontSize="16" Text="{Binding Book.BookshelvesString}" />
                 </VerticalStackLayout>
             </Border>
 
             <!--  Download Count  -->
             <Border
                 Padding="12"
-                BackgroundColor="#10FFFFFF"
                 Stroke="Transparent"
                 StrokeShape="RoundRectangle 12">
                 <VerticalStackLayout Spacing="6">
@@ -97,7 +82,7 @@
                         FontAttributes="Bold"
                         FontSize="18"
                         Text="Download Count"
-                        TextColor="{StaticResource Primary}" />
+                        TextColor="{StaticResource PrimaryDark}" />
                     <Label
                         FontSize="16"
                         Text="{Binding Book.DownloadCount}"

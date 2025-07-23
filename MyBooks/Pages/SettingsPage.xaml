@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyBooks.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <!--  Theme Section  -->
+            <Border
+                Padding="15"
+                StrokeShape="RoundRectangle 10"
+                StrokeThickness="0">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="App Theme" />
+                    <Picker Title="Select Theme" SelectedIndex="{Binding SelectedThemeIndex, Mode=TwoWay}">
+                        <Picker.Items>
+                            <x:String>System Default</x:String>
+                            <x:String>Light</x:String>
+                            <x:String>Dark</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                </VerticalStackLayout>
+            </Border>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

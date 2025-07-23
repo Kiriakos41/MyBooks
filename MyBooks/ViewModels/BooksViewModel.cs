@@ -18,7 +18,7 @@ public partial class BooksViewModel : ObservableObject
 
     [ObservableProperty] ItemsLayout currentItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical);
 
-    [ObservableProperty] string layoutIcon = "grid_icon.png"; // Show list icon initially
+    [ObservableProperty] string layoutIcon = "\ue9b0"; // Show list icon initially
 
     // Toggles between list and grid layout
     [RelayCommand]
@@ -26,24 +26,22 @@ public partial class BooksViewModel : ObservableObject
     {
         if (CurrentItemsLayout is LinearItemsLayout)
         {
-            // Switch to grid layout
             CurrentItemsLayout = new GridItemsLayout(2, ItemsLayoutOrientation.Vertical)
             {
                 HorizontalItemSpacing = 10,
                 VerticalItemSpacing = 10
             };
 
-            LayoutIcon = "list_icon.png"; // Update icon to show grid
+            LayoutIcon = "\ue9b9"; // grid icon
         }
         else
         {
-            // Switch to vertical list
             CurrentItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical)
             {
                 ItemSpacing = 10
             };
 
-            LayoutIcon = "grid_icon.png"; // Back to list icon
+            LayoutIcon = "\ue9b0"; // list icon
         }
     }
 

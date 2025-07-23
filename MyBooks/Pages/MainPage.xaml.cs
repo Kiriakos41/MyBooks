@@ -1,13 +1,13 @@
 ﻿using MyBooks.ViewModels;
 
-namespace MyBooks;
+namespace MyBooks.Pages;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    public MainPage(BooksViewModel vm)
     {
         InitializeComponent();
-        BindingContext = new BooksViewModel();
+        BindingContext = vm;
     }
 
 }

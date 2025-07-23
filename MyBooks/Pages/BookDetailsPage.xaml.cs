@@ -4,11 +4,9 @@ namespace MyBooks.Pages;
 
 public partial class BookDetailsPage : ContentPage
 {
-    private readonly BookDetailsViewModel _viewModel;
-
-    public BookDetailsPage()
+    public BookDetailsPage(BookDetailsViewModel vm)
     {
         InitializeComponent();
-        BindingContext = _viewModel = new BookDetailsViewModel();
+        BindingContext = vm;
     }
 }
