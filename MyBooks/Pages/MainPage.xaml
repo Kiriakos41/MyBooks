@@ -12,8 +12,12 @@
 
             <!--  List template  -->
             <DataTemplate x:Key="ListTemplate" x:DataType="models:Book">
-                <Grid Padding="8" ColumnDefinitions="Auto,*">
+                <Grid
+                    x:Name="listGrid"
+                    Padding="8"
+                    ColumnDefinitions="Auto,*">
                     <Border
+                        x:Name="border"
                         Grid.Column="0"
                         HeightRequest="120"
                         Stroke="Transparent"
@@ -34,12 +38,19 @@
                             Text="{Binding Authors[0].Name}"
                             TextColor="Gray" />
                     </VerticalStackLayout>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            BindingContext="{Binding Source={x:Reference border}, Path=BindingContext}"
+                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.GoToDetailsCommand}"
+                            CommandParameter="{Binding .}" />
+                    </Grid.GestureRecognizers>
                 </Grid>
             </DataTemplate>
 
             <!--  Grid template  -->
             <DataTemplate x:Key="GridTemplate" x:DataType="models:Book">
                 <Border
+                    x:Name="gridBorder"
                     Padding="4"
                     HorizontalOptions="Fill"
                     StrokeShape="RoundRectangle 8"
@@ -60,11 +71,18 @@
                             LineBreakMode="TailTruncation"
                             Text="{Binding Title}" />
                     </VerticalStackLayout>
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer
+                            BindingContext="{Binding Source={x:Reference gridBorder}, Path=BindingContext}"
+                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.GoToDetailsCommand}"
+                            CommandParameter="{Binding .}" />
+                    </Border.GestureRecognizers>
+
                 </Border>
             </DataTemplate>
 
 
-            <!--  Ο selector, με τις δύο ιδιότητες wired  -->
             <temp:BookTemplateSelector
                 x:Key="BookTemplateSelector"
                 GridTemplate="{StaticResource GridTemplate}"
@@ -106,6 +124,7 @@
 
         <!--  CollectionView  -->
         <CollectionView
+            x:Name="collectionView"
             Grid.Row="1"
             HorizontalOptions="FillAndExpand"
             ItemTemplate="{StaticResource BookTemplateSelector}"

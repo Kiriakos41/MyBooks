@@ -77,4 +77,15 @@ public partial class BooksViewModel : ObservableObject
             IsLoading = false;
         }
     }
+
+    [RelayCommand]
+    async Task GoToDetails(Book book)
+    {
+        if (book == null)
+            return;
+
+        await Shell.Current.GoToAsync($"BookDetailsPage?bookId={book.Id}");
+
+    }
+
 }

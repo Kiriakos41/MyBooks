@@ -1,0 +1,110 @@
+<ContentPage
+    x:Class="MyBooks.Pages.BookDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MyBooks.ViewModels"
+    Title="{Binding Book.Title}"
+    x:DataType="local:BookDetailsViewModel"
+    BackgroundColor="#121212">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!--  Cover Image with rounded border  -->
+            <Border
+                Padding="0"
+                HeightRequest="360"
+                HorizontalOptions="Center"
+                StrokeShape="RoundRectangle 20"
+                StrokeThickness="0"
+                WidthRequest="240">
+                <Image Aspect="AspectFill" Source="{Binding Book.CoverImage}" />
+            </Border>
+
+            <!--  Title  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="{Binding Book.Title}"
+                TextColor="White" />
+
+            <!--  Authors  -->
+            <Border
+                Padding="12"
+                BackgroundColor="#10FFFFFF"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="6">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Authors"
+                        TextColor="{StaticResource Primary}" />
+                    <Label
+                        FontSize="16"
+                        Text="{Binding Book.AuthorsString}"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!--  Subjects  -->
+            <Border
+                Padding="12"
+                BackgroundColor="#10FFFFFF"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="6">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Subjects"
+                        TextColor="{StaticResource Primary}" />
+                    <Label
+                        FontSize="16"
+                        Text="{Binding Book.SubjectsString}"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!--  Bookshelves  -->
+            <Border
+                Padding="12"
+                BackgroundColor="#10FFFFFF"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="6">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Bookshelves"
+                        TextColor="{StaticResource Primary}" />
+                    <Label
+                        FontSize="16"
+                        Text="{Binding Book.BookshelvesString}"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!--  Download Count  -->
+            <Border
+                Padding="12"
+                BackgroundColor="#10FFFFFF"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="6">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Download Count"
+                        TextColor="{StaticResource Primary}" />
+                    <Label
+                        FontSize="16"
+                        Text="{Binding Book.DownloadCount}"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
