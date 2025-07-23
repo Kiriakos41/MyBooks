@@ -1,4 +1,6 @@
-# MyBooks - .NET MAUI Book Search App
+<img width="128" height="128" alt="search" src="https://github.com/user-attachments/assets/4f21df72-d4a6-4ee8-a5ad-276c4a1953b6" />
+
+ MyBooks - .NET MAUI Book Search App
 
 A simple cross-platform application built with .NET MAUI that allows you to search and browse books using the **Gutendex API**.
 
