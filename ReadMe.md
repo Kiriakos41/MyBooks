@@ -1,4 +1,4 @@
-#<img width="512" height="512" alt="search" src="https://github.com/user-attachments/assets/4f21df72-d4a6-4ee8-a5ad-276c4a1953b6" />
+<img width="512" height="512" alt="search" src="https://github.com/user-attachments/assets/4f21df72-d4a6-4ee8-a5ad-276c4a1953b6" />
 
  MyBooks - .NET MAUI Book Search App
 
