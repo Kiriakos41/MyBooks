@@ -1,12 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MyBooks.Models;
+using MyBooks.Navigation;
 using System.Collections.ObjectModel;
 using System.Net.Http.Json;
 
 namespace MyBooks.ViewModels;
 
-public partial class BooksViewModel : ObservableObject
+public partial class BooksViewModel(INavigationService navigation) : ObservableObject
 {
     private readonly HttpClient _httpClient = new();
 
@@ -79,10 +80,9 @@ public partial class BooksViewModel : ObservableObject
     [RelayCommand]
     async Task GoToDetails(Book book)
     {
-        if (book == null)
-            return;
+        if (book == null) return;
 
-        await Shell.Current.GoToAsync($"BookDetailsPage?bookId={book.Id}");
+        await navigation.GoToAsync("BookDetailsPage", true, "bookId", book.Id);
 
     }
 

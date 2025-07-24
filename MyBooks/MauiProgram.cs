@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using MyBooks.Navigation;
 using MyBooks.Pages;
 using MyBooks.ViewModels;
 
@@ -23,6 +24,8 @@ public static class MauiProgram
         builder.Services.AddTransientWithShellRoute<MainPage, BooksViewModel>(nameof(MainPage));
         builder.Services.AddTransientWithShellRoute<SettingsPage, SettingsPageViewModel>(nameof(SettingsPage));
         builder.Services.AddTransientWithShellRoute<BookDetailsPage, BookDetailsViewModel>(nameof(BookDetailsPage));
+        builder.Services.AddTransient<INavigationService, NavigationService>();
+
 
 #if DEBUG
         builder.Logging.AddDebug();
