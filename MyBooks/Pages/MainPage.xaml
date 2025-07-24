@@ -7,7 +7,8 @@
     xmlns:temp="clr-namespace:MyBooks.Templates"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:DataType="local:BooksViewModel"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="{Binding IsLoading, Converter={toolkit:InvertedBoolConverter}}">
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -38,7 +39,7 @@
                         <Label
                             FontSize="12"
                             Text="{Binding Authors[0].Name}"
-                            TextColor="LightGray" />
+                            TextColor="Gray" />
                     </VerticalStackLayout>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer
@@ -112,7 +113,8 @@
                     Placeholder="Search books..."
                     SearchCommand="{Binding LoadBooksCommand}"
                     SearchCommandParameter="{Binding SearchQuery}"
-                    Text="{Binding SearchQuery}" />
+                    Text="{Binding SearchQuery}"
+                    TextColor="Black" />
             </Border>
             <Label
                 Grid.Column="1"

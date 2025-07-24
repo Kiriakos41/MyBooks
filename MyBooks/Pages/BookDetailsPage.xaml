@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MyBooks.ViewModels"
     Title="{Binding Book.Title}"
-    x:DataType="local:BookDetailsViewModel">
+    x:DataType="local:BookDetailsViewModel"
+    Shell.TabBarIsVisible="False">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
@@ -83,10 +84,7 @@
                         FontSize="18"
                         Text="Download Count"
                         TextColor="{StaticResource PrimaryDark}" />
-                    <Label
-                        FontSize="16"
-                        Text="{Binding Book.DownloadCount}"
-                        TextColor="White" />
+                    <Label FontSize="16" Text="{Binding Book.DownloadCount}" />
                 </VerticalStackLayout>
             </Border>
 
