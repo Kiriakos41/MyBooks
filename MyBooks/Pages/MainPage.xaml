@@ -41,12 +41,17 @@
                             Text="{Binding Authors[0].Name}"
                             TextColor="Gray" />
                     </VerticalStackLayout>
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer
-                            BindingContext="{Binding Source={x:Reference border}, Path=BindingContext}"
+                    <Grid.Behaviors>
+                        <toolkit:TouchBehavior
+                            BindingContext="{Binding Source={x:Reference listGrid}, Path=BindingContext}"
                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.GoToDetailsCommand}"
-                            CommandParameter="{Binding .}" />
-                    </Grid.GestureRecognizers>
+                            CommandParameter="{Binding .}"
+                            DefaultAnimationDuration="80"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedBackgroundColor="#0AFFFFFF"
+                            PressedOpacity="0.95"
+                            PressedScale="0.98" />
+                    </Grid.Behaviors>
                 </Grid>
             </DataTemplate>
 
@@ -56,7 +61,7 @@
                     x:Name="gridBorder"
                     Padding="4"
                     HorizontalOptions="Fill"
-                    StrokeShape="RoundRectangle 8"
+                    StrokeShape="RoundRectangle 5"
                     StrokeThickness="0">
 
                     <VerticalStackLayout HorizontalOptions="Fill" Spacing="6">
@@ -75,12 +80,18 @@
                             Text="{Binding Title}" />
                     </VerticalStackLayout>
 
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
                             BindingContext="{Binding Source={x:Reference gridBorder}, Path=BindingContext}"
                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.GoToDetailsCommand}"
-                            CommandParameter="{Binding .}" />
-                    </Border.GestureRecognizers>
+                            CommandParameter="{Binding .}"
+                            DefaultAnimationDuration="80"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedBackgroundColor="#1AFFFFFF"
+                            PressedOpacity="0.95"
+                            PressedScale="0.95" />
+
+                    </Border.Behaviors>
 
                 </Border>
             </DataTemplate>

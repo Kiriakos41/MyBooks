@@ -19,6 +19,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFont("mat.ttf", "mat");
+                fonts.AddFont("mat_fill.ttf", "matf");
             });
 
         builder.Services.AddTransientWithShellRoute<MainPage, BooksViewModel>(nameof(MainPage));

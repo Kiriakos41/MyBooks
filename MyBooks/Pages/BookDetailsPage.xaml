@@ -6,6 +6,18 @@
     Title="{Binding Book.Title}"
     x:DataType="local:BookDetailsViewModel"
     Shell.TabBarIsVisible="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ToggleLikeCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{Binding IconFont}"
+                    Glyph="{Binding IconGlyph}"
+                    Size="24"
+                    Color="Red" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+
+    </ContentPage.ToolbarItems>
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">

@@ -9,7 +9,7 @@
     Shell.TabBarBackgroundColor="{AppThemeBinding Dark={DynamicResource OffBlack},
                                                   Light=White}">
     <Shell.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={DynamicResource White}, Dark={DynamicResource OffBlack}}" StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}" />
+        <toolkit:StatusBarBehavior StatusBarColor="Black" />
     </Shell.Behaviors>
 
     <!--  Tabs bar  -->

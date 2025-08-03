@@ -4,10 +4,11 @@ namespace MyBooks.Pages;
 
 public partial class MainPage : ContentPage
 {
+    private readonly BooksViewModel view;
+
     public MainPage(BooksViewModel vm)
     {
         InitializeComponent();
-        BindingContext = vm;
+        BindingContext = view = vm;
     }
-
 }

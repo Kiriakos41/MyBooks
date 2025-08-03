@@ -10,7 +10,6 @@ namespace MyBooks.ViewModels;
 public partial class BooksViewModel(INavigationService navigation) : ObservableObject
 {
     private readonly HttpClient _httpClient = new();
-
     [ObservableProperty] ObservableCollection<Book> books = [];
 
     [ObservableProperty] bool isLoading;
@@ -20,6 +19,14 @@ public partial class BooksViewModel(INavigationService navigation) : ObservableO
     [ObservableProperty] ItemsLayout currentItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical);
 
     [ObservableProperty] string layoutIcon = "\ue9b0"; // Show list icon initially
+
+    partial void OnSearchQueryChanged(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            Books.Clear();
+        }
+    }
 
     // Toggles between list and grid layout
     [RelayCommand]
